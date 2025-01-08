@@ -1,40 +1,46 @@
-<header>
-    <style>
-        .container {
-            display: flex;
-            background-color: aquamarine;
-        }
+<!DOCTYPE html>
+<html lang="en">
 
-        .box1 {
-            background-color: red;
-            text-align: center;
-            flex-grow: 1;
-        }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
 
-        .box2 {
-            background-color: green;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        .box3 {
-            background-color: blue;
-            text-align: center;
-            flex-grow: 1;
-        }
-    </style>
-</header>
+</head>
 
 <body>
     <div class="container">
-        <div class="box1">
-            <p>box1</p>
+        <h1>To Do List</h1>
+        <div class="navbar">
+            <div class="search">
+                <input type="search" placeholder="Search here ..." onkeyup="searchTask()">
+                <i class="fa fa-search"></i>
+            </div>
+            <select title="filter" name="filter" class="filter" onchange="filterTask()">
+                <option value="All">All</option>
+                <option value="Completed">Completed</option>
+                <option value="Uncompleted">Incompleted</option>
+                <option value="Important">Important</option>
+                <option value="Urgent">Urgent</option>
+            </select>
+            <button class="night" onclick="nightMode()" title="NightMode"><i class="fa fa-moon-o"></i></button>
         </div>
-        <div class="box2">
-            <p>box2</p>
+        <div class="list">
+            <ul id="taskList">
+                <li><input title="Note1" type="checkbox">  <p>Note #1</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i></li>
+                <li><input title="Note2" type="checkbox">  <p>Note #2</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i></li>
+                <li><input title="Note1" type="checkbox">  <p>Note #3</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i></li>
+                <!-- Tasks will be dynamically added here -->
+                <!-- Example: <li><input type="checkbox" id="task1" onchange="toggleCompleted(this)"> Task 1</li> -->
+            </ul>
         </div>
-        <div class="box3">
-            <p>box3</p>
+        <div class="add">
+            <button class="add plus" onclick="addTask()"><i class="fa fa-plus"></i></button>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
+
+</html>
