@@ -29,15 +29,31 @@
         </div>
         <div class="list">
             <ul id="taskList">
-                <li><input title="Note1" type="checkbox">  <p>Note #1</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i></li>
-                <li><input title="Note2" type="checkbox">  <p>Note #2</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i></li>
-                <li><input title="Note1" type="checkbox">  <p>Note #3</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i></li>
+                <li><input title="Note1" type="checkbox">
+                    <p>Note #1</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i>
+                </li>
+                <li><input title="Note2" type="checkbox">
+                    <p>Note #2</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i>
+                </li>
+                <li><input title="Note1" type="checkbox">
+                    <p>Note #3</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i>
+                </li>
                 <!-- Tasks will be dynamically added here -->
                 <!-- Example: <li><input type="checkbox" id="task1" onchange="toggleCompleted(this)"> Task 1</li> -->
             </ul>
         </div>
+        <button class="plus" onclick="addTask()"><i class="fa fa-plus"></i></button>
+    </div>
+    <div class="popup">
         <div class="add">
-            <button class="add plus" onclick="addTask()"><i class="fa fa-plus"></i></button>
+            <h2>new note</h2>
+            <input type="text" id="taskInput" placeholder="Input your note...">
+            <div class="outer">
+                <div class="inner">
+                    <button>Cancel</button>
+                    <button>Apply</button>
+                </div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
