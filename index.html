@@ -18,14 +18,12 @@
                 <input type="search" placeholder="Search here ..." onkeyup="searchTask()">
                 <i class="fa fa-search"></i>
             </div>
-            <select title="filter" name="filter" class="filter" onchange="filterTask()">
+            <select title="filter" name="filter" class="filter hover" onchange="filterTask()">
                 <option value="All">All</option>
                 <option value="Completed">Completed</option>
                 <option value="Uncompleted">Incompleted</option>
-                <option value="Important">Important</option>
-                <option value="Urgent">Urgent</option>
             </select>
-            <button class="night" onclick="nightMode()" title="NightMode"><i class="fa fa-moon-o"></i></button>
+            <button class="night hover" onclick="nightMode()" title="NightMode"><i class="fa fa-moon-o"></i></button>
         </div>
         <div class="list">
             <ul id="taskList">
@@ -38,11 +36,9 @@
                 <li><input title="Note1" type="checkbox">
                     <p>Note #3</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i>
                 </li>
-                <!-- Tasks will be dynamically added here -->
-                <!-- Example: <li><input type="checkbox" id="task1" onchange="toggleCompleted(this)"> Task 1</li> -->
             </ul>
         </div>
-        <button class="plus" onclick="addTask()"><i class="fa fa-plus"></i></button>
+        <button class="plus hover" id="" onclick="addTask()"><i class="fa fa-plus"></i></button>
     </div>
     <div class="popup">
         <div class="add">
@@ -50,13 +46,37 @@
             <input type="text" id="taskInput" placeholder="Input your note...">
             <div class="outer">
                 <div class="inner">
-                    <button>Cancel</button>
-                    <button>Apply</button>
+                    <button class="hover">Cancel</button>
+                    <button class="hover" onclick="create()">Apply</button>
                 </div>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script>
+        let  tasks = []
+        function create() {
+            const taskInput = document.getElementById('taskInput');
+            const task = taskInput.value.trim();
+            if (task) {
+                tasks.push({ title: task });
+                renderTasks();
+                taskInput.value = '';
+                popup.style.visibility = 'hidden';
+            }
+        }
+        
+        function addTask() {
+            const popup = document.querySelector('.popup');
+            popup.style.visibility = 'visible';
+        }
+
+        function nightMode() {
+            const elements = document.querySelectorAll('body,.container, .navbar, .list, #taskList, .search, .filter, .plus,p,h1,h2');
+            elements.forEach(element => {
+                element.classList.toggle('night-mode');
+            });
+        }
+    </script>
 </body>
 
 </html>
