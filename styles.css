@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -223,3 +224,85 @@ body.nightMode input[type="checkbox"] {
   background-color: #6c63ff;
   border-color: #6c63ff;
 }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    border-radius:0 0 10px 10px;
+}
+.logo{
+    background-color:azure;
+    color:rgb(21, 82, 62);
+    border-radius:10px;
+    padding: 5px;
+    text-align: center;
+    flex-grow:0;
+}
+.search {
+    margin:auto;
+    border-radius: 5px;
+    border: 0.5px solid #ccc;
+    display: flex;
+    text-align: center;
+    width: 50%;
+}
+.contact {
+    margin: auto 0 auto;
+}
+.search input {
+    padding: 0.5em;
+    border: none;
+    border-radius: 5px;
+    flex-grow: 1;
+}
+
+.container{
+    background-color: aliceblue;
+    padding: 1em;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content:stretch;
+}
+.item{
+    background-color: white;
+    margin: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column wrap;
+    padding: 1em;
+}
+.item img {
+    height: 200px;
+    width: 280px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.item .name{
+    display:flex;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+}
+.button{
+    background-color: rgb(59, 143, 208);
+    border: none;
+    color: white;
+    padding: 0.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.button:hover{
+    background-color: rgb(21, 82, 62);
+}
+/* .like{
+    width:20px;
+    height: 20px;
+} */
