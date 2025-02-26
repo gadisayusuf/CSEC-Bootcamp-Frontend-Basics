@@ -1,40 +1,56 @@
-<header>
-    <style>
-        .container {
-            display: flex;
-            background-color: aquamarine;
-        }
+<!DOCTYPE html>
+<html lang="en">
 
-        .box1 {
-            background-color: red;
-            text-align: center;
-            flex-grow: 1;
-        }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
 
-        .box2 {
-            background-color: green;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        .box3 {
-            background-color: blue;
-            text-align: center;
-            flex-grow: 1;
-        }
-    </style>
-</header>
+</head>
 
 <body>
     <div class="container">
-        <div class="box1">
-            <p>box1</p>
+        <div>
+            <h1>To Do List</h1>
+            <div class="navbar">
+                <div class="search">
+                    <input id="search" type="search" placeholder="Search here ...">
+                    <i class="fa fa-search " id="fa-search"></i>
+                </div>
+                <select title="filter" id="filter" class="filter hover button" onchange="filterTask()">
+                    <option value="All" id="all">All</option>
+                    <option value="Completed" id="completed">Completed</option>
+                    <option value="Uncompleted" id="incomplete">Incompleted</option>
+                </select>
+                <button id="nightBtn" class="night hover button" title="NightMode">
+                    <i class="fa fa-moon-o"></i>
+                </button>
+            </div>
         </div>
-        <div class="box2">
-            <p>box2</p>
-        </div>
-        <div class="box3">
-            <p>box3</p>
+        <div class="controls">
+            <div class="list" id="list">
+                <ul id="taskList">
+                    <img src="./icons/Detective-check-footprint 1.svg" />
+                </ul>
+            </div>
+            <button class="plus hover button" id="add" onclick="addTask()"><i class="fa fa-plus"></i></button>
         </div>
     </div>
+    <div class="modal" id="modal">
+        <div class="content" id="content">
+            <h2>new note</h2>
+            <input type="text" id="taskInput" placeholder="Input your note...">
+            <div class="inner">
+                <button class="hover button" id="cancel">Cancel</button>
+                <button class="hover button" id="apply">Apply</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="index.js">
+    </script>
 </body>
+
+</html>
