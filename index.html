@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 
@@ -15,67 +15,48 @@
         <h1>To Do List</h1>
         <div class="navbar">
             <div class="search">
-                <input type="search" placeholder="Search here ..." onkeyup="searchTask()">
-                <i class="fa fa-search"></i>
+                <input id="search" type="search" placeholder="Search here ...">
+                <i class="fa fa-search " onclick="searchButton()" id="fa-search"></i>
             </div>
-            <select title="filter" name="filter" class="filter hover" onchange="filterTask()">
-                <option value="All">All</option>
-                <option value="Completed">Completed</option>
-                <option value="Uncompleted">Incompleted</option>
+            <select title="filter" id="filter" class="filter hover button" onchange="filterTask()">
+                <option value="All" id="all">All</option>
+                <option value="Completed" id="completed">Completed</option>
+                <option value="Uncompleted" id="incomplete">Incompleted</option>
             </select>
-            <button class="night hover" onclick="nightMode()" title="NightMode"><i class="fa fa-moon-o"></i></button>
+            <button id="nightBtn" class="night hover button" title="NightMode">
+                <i class="fa fa-moon-o"></i>
+            </button>
         </div>
-        <div class="list">
+        <div class="list" id="list">
             <ul id="taskList">
-                <li><input title="Note1" type="checkbox">
+                <li class="item">
+                    <div id="checkbox"></div>
                     <p>Note #1</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i>
                 </li>
-                <li><input title="Note2" type="checkbox">
+                <li>
+                    <div id="checkbox"></div>
                     <p>Note #2</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i>
                 </li>
-                <li><input title="Note1" type="checkbox">
+                <li class="item">
+                    <div id="checkbox"></div>
                     <p>Note #3</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i>
                 </li>
             </ul>
         </div>
-        <button class="plus hover" id="" onclick="addTask()"><i class="fa fa-plus"></i></button>
+        <button class="plus hover button" id="add" onclick="addTask()"><i class="fa fa-plus"></i></button>
     </div>
-    <div class="popup">
-        <div class="add">
+    <div class="modal" id="modal">
+        <div class="content" id="content">
             <h2>new note</h2>
             <input type="text" id="taskInput" placeholder="Input your note...">
-            <div class="outer">
-                <div class="inner">
-                    <button class="hover">Cancel</button>
-                    <button class="hover" onclick="create()">Apply</button>
-                </div>
+            <div class="inner">
+                <button class="hover button" id="cancel">Cancel</button>
+                <button class="hover button" id="apply">Apply</button>
             </div>
         </div>
     </div>
-    <script>
-        let  tasks = []
-        function create() {
-            const taskInput = document.getElementById('taskInput');
-            const task = taskInput.value.trim();
-            if (task) {
-                tasks.push({ title: task });
-                renderTasks();
-                taskInput.value = '';
-                popup.style.visibility = 'hidden';
-            }
-        }
-        
-        function addTask() {
-            const popup = document.querySelector('.popup');
-            popup.style.visibility = 'visible';
-        }
-
-        function nightMode() {
-            const elements = document.querySelectorAll('body,.container, .navbar, .list, #taskList, .search, .filter, .plus,p,h1,h2');
-            elements.forEach(element => {
-                element.classList.toggle('night-mode');
-            });
-        }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="index.js">
     </script>
 </body>
 

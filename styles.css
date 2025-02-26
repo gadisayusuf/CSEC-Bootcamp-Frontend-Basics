@@ -31,13 +31,14 @@ body{
     font-size: 1rem;
     margin-right: 10px;
 }
-.search input{
+input{
     width: 100%;
     padding: 10px;
     border: 1px solid #6C63FF;
     border-radius: 5px;
     outline: none;
     color:#6C63FF;
+    background-color: transparent;
 }
 .fa-search{
     position:absolute;
@@ -47,56 +48,42 @@ body{
     cursor:pointer;
     font-size: 1.2rem;
 }
-.filter{
-    width:80px;
-    margin: 0 10px 0 10px;
+.button{
+    border: none;
     outline: none;
+    margin: 0 10px 0 10px;
     padding: 10px;
     border-radius: 5px;
-    text-transform:uppercase;
     cursor: pointer;
     background-color: #6C63FF;
     color: white;
+}
+.filter{
+    width:100px;
+    text-transform:uppercase;
 }
 .filter option{
     color:#6C63FF;
     background-color: white;
     text-transform: capitalize;
 }
-option:hover{
-    background-color: rgba(255,255,255,0.5);
-    cursor: pointer;
-}
 
 .night{
-    border:none;
     width: 40px;
-    margin-left:10px;
-    cursor: pointer;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #6C63FF;
     font-size:1.2rem;
 }
 
 .plus {
-    outline: none;
-    border: none;
     position: absolute;
     bottom: 5%;
     right: 5%;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #6C63FF;
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 .plus .fa{
-    color: white;
-    padding: 10px;
     font-size: 1.5rem;
-    font-weight: 100;
 }
 .hover:hover{
     background-color: #3c359b;
@@ -106,18 +93,18 @@ option:hover{
 }
 .list li{
     list-style: none;
-    text-transform: uppercase;
     display: flex;
     padding: 10px 0;
-    border-bottom: 1px solid rgba(37, 37, 37, 0.5);
+    border-bottom: 1px solid rgba(127, 109, 109, 0.5);
 }
-li input[type="checkbox"] {
-    margin-right: 10px;
-    transform: scale(1.5);
+li #checkbox {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #00000088;
+    margin: 5px 10px 5px 0;
+    border-radius: 50%;
     cursor: pointer;
-    background-color: #6C63FF;
 }
-
 li p{
     display: inline;
     flex-grow: 1;
@@ -126,25 +113,31 @@ li p{
 li .fa{
     margin:5px;
     cursor: pointer;
-    color: rgba(37, 37, 37, 0.5);
     transition: color 0.3s ease,opacity 0.3s ease;
     opacity: 0;
 }
 li:hover .fa{
     opacity: 1;
-    color: rgba(255,0,0,0.5);
+    color: rgb(85, 82, 82);
+
 }
-body{
-    position: relative;
+li .fa-trash:hover{
+    color: rgba(255,0,0,0.8);
+    opacity: 1;
+}   
+.modal{
+    position: fixed;
+    z-index:1;
+    top:0;
+    bottom:0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    padding: 160px 0 0 400px;
+    overflow: auto;
+    display: none;
 }
-.popup{
-position: absolute;
-top:100px;
-left:470px;
-visibility: hidden;
-transition: visibility 0s, opacity 0.5s ease;
-}
-.add{
+.content{
     width:500px;
     height:300px;
     padding:20px;
@@ -152,36 +145,42 @@ transition: visibility 0s, opacity 0.5s ease;
     border : 1px solid #6c63ff;
     background-color: #f5f5f5;
 }
-.add>h2{
+.content>h2{
     margin-bottom: 20px;
     text-align: center;
     color: #252525;
     text-transform: uppercase;
 }
-.add>input{
-    width: 460px;
-    height: 40px;
-    padding: 8px 16px;
-    margin-bottom: 150px;
-    border: 1px solid #6c63ff;
-    border-radius: 5px;
-    outline: none;
-}
-
 .inner{
     display: flex;
+    height: 70%;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
-.inner>button{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #6C63FF;
-    color: white;
+#cancel{
+    
+    background-color: rgba(245, 245, 245,0);
+    color: #6C63FF;
+    border: 1px solid #6C63FF;
     cursor: pointer;
 }
-.night-mode {
+#cancel:hover{
+    background-color: rgba(246, 238, 238, 0.8);
+}
+body.nightMode{
     background-color: #333333;
-    color: #ffffff;
+    color:white;
+}
+body.nightMode .container, body.nightMode h1 , body.nightMode .search, body.nightMode .content,body.nightMode input,body.nightMode .fa-search,body.nightMode input[type="checkbox"]{
+    background-color: #333333;
+    color:white;
+    border-color: white;
+}
+.completed p{
+    text-decoration: line-through;
+    color: rgba(0,0,0,0.5);
+}
+.completed #checkbox{
+    background-color:#6C63FF;
+    border-color: #6C63FF;
 }
