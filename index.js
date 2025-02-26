@@ -4,8 +4,10 @@ let cancelBtn = document.getElementById("cancel");
 let applyBtn = document.getElementById("apply");
 let button = document.getElementsByClassName("plus")[0];
 let list = [];
+let isEditing = false;
 button.onclick = function () {
   modal.style.display = "block";
+  $("#taskInput").focus();
 };
 cancelBtn.onclick = function () {
   modal.style.display = "none";
@@ -14,11 +16,17 @@ cancelBtn.onclick = function () {
 applyBtn.onclick = function () {
   let input = $("#taskInput").val();
   if (input != "") {
-    let newItem = `<li class="item"><div id="checkbox"/>
+    let newItem = `<li class="item">
+                    <div id="checkbox"></div>
                     <p>${input}</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i>
                 </li>`;
     list.push(newItem);
     $("#taskInput").val("");
+    if (list) {
+      $("#taskList").remove("img");
+      $("#taskList").html(list.join(""));
+      $("#taskList").children(".item").last().css("border", "none");
+    }
   }
   modal.style.display = "none";
 };
@@ -39,24 +47,38 @@ nightbtn.click(function () {
   }
 });
 $("#taskList").on("click", "li #checkbox", function () {
-  $(this).closest("li").hasClass("completed")
-    ? $(this).closest("li").removeClass("completed")
-    : $(this).closest("li").addClass("completed");
+  !isEditing &&
+    ($(this).closest("li").hasClass("completed")
+      ? $(this).closest("li").removeClass("completed")
+      : $(this).closest("li").addClass("completed"));
 });
 $("#taskList").on("click", "li p", function () {
-  $(this).closest("li").hasClass("completed")
-    ? $(this).closest("li").removeClass("completed")
-    : $(this).closest("li").addClass("completed");
+  console.log(isEditing);
+  !isEditing &&
+    ($(this).closest("li").hasClass("completed")
+      ? $(this).closest("li").removeClass("completed")
+      : $(this).closest("li").addClass("completed"));
 });
 $("#taskList").on("click", "li .fa-trash", function () {
   $(this).closest("li").remove();
 });
 $("#taskList").on("click", "li .fa-pencil", function () {
   $(this).closest("li").removeClass("completed");
+  isEditing = true;
   let pElement = $(this).closest("li").children("p");
   let originalText = pElement.text();
   pElement.attr("contenteditable", "true").focus();
   pElement.on("blur", function () {
     pElement.attr("contenteditable", "false");
+    isEditing = false;
   });
+});
+$("#fa-search").on("click", () => {
+  if (!$("#search").is(":focus")) {
+    $("#search").focus();
+  }
+  if ($("#search").val()) {
+    console.log($("#search").val());
+    $("#search").val("");
+  }
 });

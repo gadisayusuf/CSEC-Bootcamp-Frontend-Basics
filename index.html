@@ -12,38 +12,31 @@
 
 <body>
     <div class="container">
-        <h1>To Do List</h1>
-        <div class="navbar">
-            <div class="search">
-                <input id="search" type="search" placeholder="Search here ...">
-                <i class="fa fa-search " onclick="searchButton()" id="fa-search"></i>
+        <div>
+            <h1>To Do List</h1>
+            <div class="navbar">
+                <div class="search">
+                    <input id="search" type="search" placeholder="Search here ...">
+                    <i class="fa fa-search " id="fa-search"></i>
+                </div>
+                <select title="filter" id="filter" class="filter hover button" onchange="filterTask()">
+                    <option value="All" id="all">All</option>
+                    <option value="Completed" id="completed">Completed</option>
+                    <option value="Uncompleted" id="incomplete">Incompleted</option>
+                </select>
+                <button id="nightBtn" class="night hover button" title="NightMode">
+                    <i class="fa fa-moon-o"></i>
+                </button>
             </div>
-            <select title="filter" id="filter" class="filter hover button" onchange="filterTask()">
-                <option value="All" id="all">All</option>
-                <option value="Completed" id="completed">Completed</option>
-                <option value="Uncompleted" id="incomplete">Incompleted</option>
-            </select>
-            <button id="nightBtn" class="night hover button" title="NightMode">
-                <i class="fa fa-moon-o"></i>
-            </button>
         </div>
-        <div class="list" id="list">
-            <ul id="taskList">
-                <li class="item">
-                    <div id="checkbox"></div>
-                    <p>Note #1</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i>
-                </li>
-                <li>
-                    <div id="checkbox"></div>
-                    <p>Note #2</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i>
-                </li>
-                <li class="item">
-                    <div id="checkbox"></div>
-                    <p>Note #3</p><i class="fa fa-pencil"></i><i class="fa fa-trash"></i>
-                </li>
-            </ul>
+        <div class="controls">
+            <div class="list" id="list">
+                <ul id="taskList">
+                    <img src="./icons/Detective-check-footprint 1.svg" />
+                </ul>
+            </div>
+            <button class="plus hover button" id="add" onclick="addTask()"><i class="fa fa-plus"></i></button>
         </div>
-        <button class="plus hover button" id="add" onclick="addTask()"><i class="fa fa-plus"></i></button>
     </div>
     <div class="modal" id="modal">
         <div class="content" id="content">
